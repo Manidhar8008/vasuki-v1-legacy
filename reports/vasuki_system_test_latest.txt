@@ -1,0 +1,28 @@
+================================================================================
+VASUKI SYSTEM TEST v1
+Time: 2026-06-24T17:36:28.477140+00:00
+================================================================================
+PASS: skills registry exists
+  /data/data/com.termux/files/home/vasuki/skills/registry.json
+PASS: agent registry exists
+  /data/data/com.termux/files/home/vasuki/config/agent_registry.json
+PASS: control database exists
+  /data/data/com.termux/files/home/vasuki/database/vasuki_control.db
+PASS: skills registry JSON
+  4 skills loaded
+PASS: agent registry JSON
+  10 agents loaded
+PASS: agent-to-skill wiring
+  all declared skills wired
+PASS: control DB integrity
+  ok
+PASS: Council task table
+  agent_tasks rows: 2
+PASS: core automation scripts
+  all required scripts found
+FAIL: memory search capability
+  exit=1; output=File "/data/data/com.termux/files/home/vasuki/scripts/search.py", line 1     mport sqlite3           ^^^^^^^ SyntaxError: invalid syntax
+================================================================================
+RESULT: 9/10 checks passed
+REPORT: /data/data/com.termux/files/home/vasuki/reports/vasuki_system_test_latest.json
+================================================================================

@@ -1,4 +1,4 @@
-mport sqlite3
+import sqlite3
 import sys
 
 DB = "/data/data/com.termux/files/home/vasuki/data/vasuki.db"

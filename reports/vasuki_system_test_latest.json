@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-07-03T06:41:10.710388+00:00",
+  "results": [
+    {
+      "name": "skills registry exists",
+      "passed": true,
+      "detail": "/data/data/com.termux/files/home/vasuki/skills/registry.json"
+    },
+    {
+      "name": "agent registry exists",
+      "passed": true,
+      "detail": "/data/data/com.termux/files/home/vasuki/config/agent_registry.json"
+    },
+    {
+      "name": "control database exists",
+      "passed": true,
+      "detail": "/data/data/com.termux/files/home/vasuki/database/vasuki_control.db"
+    },
+    {
+      "name": "skills registry JSON",
+      "passed": true,
+      "detail": "4 skills loaded"
+    },
+    {
+      "name": "agent registry JSON",
+      "passed": true,
+      "detail": "10 agents loaded"
+    },
+    {
+      "name": "agent-to-skill wiring",
+      "passed": true,
+      "detail": "all declared skills wired"
+    },
+    {
+      "name": "control DB integrity",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "Council task table",
+      "passed": true,
+      "detail": "agent_tasks rows: 3"
+    },
+    {
+      "name": "core automation scripts",
+      "passed": true,
+      "detail": "all required scripts found"
+    },
+    {
+      "name": "memory search capability",
+      "passed": false,
+      "detail": "exit=1; output=Traceback (most recent call last):   File \"/data/data/com.termux/files/home/vasuki/scripts/search.py\", line 11, in <module>     cur.execute(\"\"\"     ~~~~~~~~~~~^^^^     SELECT filename,path,ai_category,importance     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ...<3 lines>...     LIMIT 20     ^^^^^^^^     \"\"\", (f\"%{query}%\",))     ^^^^^^^^^^^^^^^^^^^^^ sqlite3.DatabaseError: malformed database schema (2026-06-16T09:00:41.227217) - orphan index"
+    }
+  ]
+}

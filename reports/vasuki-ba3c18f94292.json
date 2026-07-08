@@ -1,0 +1,47 @@
+{
+  "task_id": "vasuki-ba3c18f94292",
+  "created_at": "2026-06-24T17:20:44.400514+00:00",
+  "goal": "Validate the Vasuki skill registry, identify missing agent owners, and propose a non-destructive agent wiring plan",
+  "plan": {
+    "agent": "planner",
+    "goal": "Validate the Vasuki skill registry, identify missing agent owners, and propose a non-destructive agent wiring plan",
+    "steps": [
+      "Identify relevant source files and database records",
+      "Produce a non-destructive proposed action",
+      "Request independent critique",
+      "Require verification criteria before execution"
+    ],
+    "requires_human_approval": true
+  },
+  "critique": {
+    "agent": "critic",
+    "verdict": "REVISE",
+    "risks": [
+      "Multiple Vasuki databases exist; do not assume one is canonical.",
+      "No destructive command may run without a backup and explicit approval.",
+      "Every claim must identify source files, SQL query, or log evidence.",
+      "A proposal must be idempotent: rerunning it must not duplicate data."
+    ],
+    "required_changes": [
+      "Specify the database path explicitly.",
+      "Specify rollback or backup behavior.",
+      "Specify a verification command."
+    ],
+    "plan_reviewed": {
+      "agent": "planner",
+      "goal": "Validate the Vasuki skill registry, identify missing agent owners, and propose a non-destructive agent wiring plan",
+      "steps": [
+        "Identify relevant source files and database records",
+        "Produce a non-destructive proposed action",
+        "Request independent critique",
+        "Require verification criteria before execution"
+      ],
+      "requires_human_approval": true
+    }
+  },
+  "decision": {
+    "agent": "safety_gate",
+    "status": "PENDING_HUMAN_APPROVAL",
+    "reason": "Execution is disabled in Council v1. This run creates an auditable proposal only."
+  }
+}

@@ -1,0 +1,6 @@
+VASUKI RETRIEVAL STATUS
+DB: /data/data/com.termux/files/home/vasuki/vasuki_v2/data/vasuki_personal_memory.db
+Integrity: ok
+personal_documents: 46
+personal_chunks: 336
+personal_search: 336

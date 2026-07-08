@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-06-24T17:26:39.349388+00:00",
+  "agents": [
+    {
+      "id": "planner_agent",
+      "role": "Planning and task decomposition",
+      "skills": [
+        "task.plan"
+      ],
+      "permissions": [
+        "database.read",
+        "report.write"
+      ],
+      "locations": [
+        "planner_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "search_agent",
+      "role": "Personal-memory and file retrieval",
+      "skills": [
+        "memory.search"
+      ],
+      "permissions": [
+        "database.read"
+      ],
+      "locations": [
+        "search_agent.py",
+        "agents/search_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "memory_agent",
+      "role": "Memory validation, provenance, and database inspection",
+      "skills": [
+        "database.audit"
+      ],
+      "permissions": [
+        "database.read",
+        "report.write"
+      ],
+      "locations": [
+        "memory_agent.py",
+        "agents/memory_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "filesystem_agent",
+      "role": "File discovery, classification, and normalization proposals",
+      "skills": [
+        "files.normalize"
+      ],
+      "permissions": [
+        "data.read",
+        "normalized.write"
+      ],
+      "locations": [
+        "filesystem_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "backup_agent",
+      "role": "Database snapshot creation and backup verification",
+      "skills": [
+        "backup.create"
+      ],
+      "permissions": [
+        "database.read",
+        "backup.write"
+      ],
+      "locations": [
+        "backup_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "executor_agent",
+      "role": "Approved action execution only",
+      "skills": [
+        "task.execute"
+      ],
+      "permissions": [
+        "shell.execute",
+        "log.write"
+      ],
+      "locations": [
+        "executor_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "requires_approved_task_id"
+    },
+    {
+      "id": "reasoning_agent",
+      "role": "Evidence-based critique and decision support",
+      "skills": [
+        "task.critique"
+      ],
+      "permissions": [
+        "database.read",
+        "report.write"
+      ],
+      "locations": [
+        "reasoning_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "device_agent",
+      "role": "Device health and runtime inspection",
+      "skills": [
+        "device.inspect"
+      ],
+      "permissions": [
+        "report.write"
+      ],
+      "locations": [
+        "device_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "project_agent",
+      "role": "Repository inventory and project-state analysis",
+      "skills": [
+        "project.audit"
+      ],
+      "permissions": [
+        "data.read",
+        "report.write"
+      ],
+      "locations": [
+        "project_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    },
+    {
+      "id": "code_agent",
+      "role": "Code analysis and proposed patches",
+      "skills": [
+        "code.review"
+      ],
+      "permissions": [
+        "data.read",
+        "report.write"
+      ],
+      "locations": [
+        "code_agent.py"
+      ],
+      "status": "AVAILABLE",
+      "execution_policy": "read_or_propose_only"
+    }
+  ]
+}

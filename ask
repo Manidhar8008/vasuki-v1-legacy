@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+import sqlite3
+import argparse
+import sys
+from typing import List, Dict, Any
+
+DB_PATH = "vasuki.db"
+
+
+class VasukiAskEngine:
+    def __init__(self, db_path: str):
+        self.db_path = db_path
+        self.conn = None
+
+    def connect(self):
+        try:
+            self.conn = sqlite3.connect(self.db_path)
+            self.conn.row_factory = sqlite3.Row
+        except sqlite3.Error as e:
+            print(f"[DB ERROR] Failed to connect: {e}")
+            sys.exit(1)
+
+    def close(self):
+        if self.conn:
+            self.conn.close()
+
+    def search_memories(self, query: str, limit: int = 20) -> List[Dict[str, Any]]:
+        """
+        Basic full-text LIKE search.
+        Upgrade later to FTS5 if needed.
+        """
+        sql = """
+        SELECT * FROM memories
+        WHERE content LIKE ?
+        ORDER BY id DESC
+        LIMIT ?
+        """
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(sql, (f"%{query}%", limit))
+            rows = cursor.fetchall()
+            return [dict(row) for row in rows]
+        except sqlite3.Error as e:
+            print(f"[DB ERROR] Query failed: {e}")
+            return []
+
+    def search_entities(self, query: str, limit: int = 10) -> List[Dict[str, Any]]:
+        """
+        If entities table exists in Vasuki system.
+        """
+        sql = """
+        SELECT * FROM entities
+        WHERE name LIKE ?
+        ORDER BY id DESC
+        LIMIT ?
+        """
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(sql, (f"%{query}%", limit))
+            rows = cursor.fetchall()
+            return [dict(row) for row in rows]
+        except sqlite3.Error:
+            return []
+
+    def format_output(self, results: List[Dict[str, Any]], title: str):
+        print("\n" + "=" * 60)
+        print(f"{title} | Results: {len(results)}")
+        print("=" * 60)
+
+        if not results:
+            print("No results found.")
+            return
+
+        for i, row in enumerate(results, 1):
+            print(f"\n[{i}]")
+            for k, v in row.items():
+                print(f"  {k}: {v}")
+
+    def run_query(self, query: str, mode: str, limit: int):
+        self.connect()
+
+        if mode == "memory":
+            results = self.search_memories(query, limit)
+            self.format_output(results, "MEMORY SEARCH")
+
+        elif mode == "entity":
+            results = self.search_entities(query, limit)
+            self.format_output(results, "ENTITY SEARCH")
+
+        elif mode == "all":
+            mem = self.search_memories(query, limit)
+            ent = self.search_entities(query, limit)
+
+            self.format_output(mem, "MEMORY SEARCH")
+            self.format_output(ent, "ENTITY SEARCH")
+
+        else:
+            print(f"[ERROR] Unknown mode: {mode}")
+
+        self.close()
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Vasuki Ask Engine")
+    parser.add_argument("query", help="Search query for Vasuki memory system")
+    parser.add_argument("--mode", choices=["memory", "entity", "all"], default="memory")
+    parser.add_argument("--limit", type=int, default=20)
+
+    args = parser.parse_args()
+
+    engine = VasukiAskEngine(DB_PATH)
+    engine.run_query(args.query, args.mode, args.limit)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,126 @@
+================================================================================
+VASUKI PERSONAL SEARCH CONTENT PROBE v1
+================================================================================
+
+TABLE: personal_documents
+--------------------------------------------------------------------------------
+COLUMNS: id, relative_path, source_path, filename, extension, sha256, size_bytes, status, extraction_note, extracted_at
+
+ROW 1:
+  id: 1
+  relative_path: MANIDHAR%20PATI%20CV.docx
+  source_path: /data/data/com.termux/files/home/storage/shared/MANIDHAR%20PATI%20CV.docx
+  filename: MANIDHAR%20PATI%20CV.docx
+  extension: .docx
+  sha256: f8b966407ee9403127cfc63a51371bf19cfe2cdc2056007b539336b15a7f422f
+  size_bytes: 113177
+  status: extracted
+  extraction_note: None
+  extracted_at: 2026-06-23T14:47:19.898130+00:00
+
+ROW 2:
+  id: 2
+  relative_path: Manidhar_2026.pdf
+  source_path: /data/data/com.termux/files/home/storage/shared/Manidhar_2026.pdf
+  filename: Manidhar_2026.pdf
+  extension: .pdf
+  sha256: 30cee746d81ab795ba468aabbc083fd5db0ad39910871bdb47f3a10ead3a6dbf
+  size_bytes: 120046
+  status: extracted
+  extraction_note: None
+  extracted_at: 2026-06-23T14:47:20.363857+00:00
+
+ROW 3:
+  id: 3
+  relative_path: Pictures/Screenshots/education docs CTS!.pdf
+  source_path: /data/data/com.termux/files/home/storage/shared/Pictures/Screenshots/education docs CTS!.pdf
+  filename: education docs CTS!.pdf
+  extension: .pdf
+  sha256: e086b00dee4201b1e42c4931d516dcdb2dde52206806128df33c611c0b67a74d
+  size_bytes: 5526808
+  status: extracted
+  extraction_note: None
+  extracted_at: 2026-06-23T14:47:25.926595+00:00
+
+TABLE: personal_chunks
+--------------------------------------------------------------------------------
+COLUMNS: id, document_id, source_unit, chunk_index, text, char_count
+
+ROW 1:
+  id: 1
+  document_id: 1
+  source_unit: document
+  chunk_index: 1
+  text: MANIDHAR PATI | MANIDHAR PATI
+8008106844
+@manidharpati
+ patimanidhar23@gmail.com | 8008106844
+@manidharpati
+ patimanidhar23@gmail.com | 8008106844
+@manidharpati
+ patimanidhar23@gmail.com | I have just graduated with a degree in bachelor of business management  as a fresher to the market with some experience and would like to associate with an organ...
+  char_count: 1186
+
+ROW 2:
+  id: 2
+  document_id: 1
+  source_unit: document
+  chunk_index: 2
+  text: tate of new technology and be a part of the team that excels in work towards the growth of organization. Reliable communication skills, both oral and written, with a basic understanding of sales, analytics and marketing. | I have just graduated with a degree in bachelor of business management  as a fresher to the market with some experience and wou...
+  char_count: 1393
+
+ROW 3:
+  id: 3
+  document_id: 1
+  source_unit: document
+  chunk_index: 3
+  text: rated Reporting Information System (IRIS)
+Technology architecture analysis
+Documentation skills
+Data entry
+Database management
+Forecasting and planning
+Customer service
+
+Experience | Data organization
+Project Management
+Computer skills
+Multitasking
+MS Office
+File maintenance
+Business recovery and sustainability
+Integrated Reporting Information Syst...
+  char_count: 1394
+
+TABLE: personal_search
+--------------------------------------------------------------------------------
+COLUMNS: text, relative_path, source_unit
+
+ROW 1:
+  rowid: 1
+  text: None
+  relative_path: None
+  source_unit: None
+
+ROW 2:
+  rowid: 2
+  text: None
+  relative_path: None
+  source_unit: None
+
+ROW 3:
+  rowid: 3
+  text: None
+  relative_path: None
+  source_unit: None
+
+================================================================================
+FTS TOKEN TESTS
+================================================================================
+vasuki               0
+memory               0
+data                 123
+workflow             1
+normalization        0
+phone                10
+project              65

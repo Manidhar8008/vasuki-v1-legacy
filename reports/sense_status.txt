@@ -1,0 +1,6 @@
+========================================================================
+VASUKI SENSE NODE STATUS
+Database: /data/data/com.termux/files/home/vasuki/sense/sense_node.db
+========================================================================
+audio      QUEUED       24
+document   QUEUED       1

@@ -1,0 +1,19 @@
+import sqlite3
+
+conn = sqlite3.connect("data/vasuki.db")
+cur = conn.cursor()
+
+cur.execute("""
+CREATE TABLE IF NOT EXISTS files (
+    id INTEGER PRIMARY KEY,
+    path TEXT,
+    name TEXT,
+    size INTEGER
+)
+""")
+
+conn.commit()
+conn.close()
+
+print("Database created")
+

@@ -1,0 +1,16 @@
+./backups/vasuki_1781641162.db
+./backups/vasuki_2026-06-16_02-18.db
+./backups/vasuki_2026-06-16_02-19.db
+./backups/vasuki_20260617_021928.db
+./backups/vasuki_20260617_023432.db
+./backups/vasuki_20260617_024252.db
+./backups/vasuki_memory_pre_repair_20260624_225021.db
+./data/test.db
+./data/vasuki.db
+./database/vasuki_control.db
+./scripts/vasuki.db
+./sense/sense_node.db
+./vasuki.db
+./vasuki_v2/data/vasuki.db
+./vasuki_v2/data/vasuki_personal_memory.db
+./vasuki_v2/data/vasuki_source_memory.db

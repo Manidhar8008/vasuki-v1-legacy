@@ -1,0 +1,14 @@
+action_queue       file_fingerprint      memory_search_content
+agent_memory       file_inventory        memory_search_data
+code_inventory     files                 memory_search_docsize
+daemon_health      files_index           memory_search_idx
+devices            graph_edges           observations
+drift_events       identity_objects      processing_queue
+drift_log          kg_edges              provenance
+entities           kg_nodes              questions
+entity_map         life_domains          relationships
+event_log          memories              skills
+events             memory                snapshot_diffs
+evidence           memory_events         snapshots
+extracted_content  memory_search         system_logs
+extracted_text     memory_search_config  timeline_events

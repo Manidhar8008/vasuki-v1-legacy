@@ -1,0 +1,9 @@
+{
+  "source_path": "/data/data/com.termux/files/home/vasuki/sense/captures/audio/mic_20260624_233552.wav",
+  "sha256": "7aba7ee8e370671bf61bda233320c0ae3a77d725646cac2f67eed8362400efa2",
+  "created_at": "2026-06-25T05:21:58.661836+00:00",
+  "engine": "manual_transcript_adapter_v1",
+  "language": "en",
+  "transcript": "This is Vasuki microphone test number one.",
+  "policy": "local-only; explicit user-provided transcript"
+}

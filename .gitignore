@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+secrets/
+credentials/
+config.local.*
+
+# Databases and backups
+*.db
+*.sqlite
+*.sqlite3
+*.sqlitedb
+backups/
+backup/
+*.bak
+
+# Models / large downloaded assets
+models/
+*.gguf
+*.bin
+*.safetensors
+*.onnx
+
+# Logs / runtime output
+logs/
+*.log
+tmp/
+temp/
+cache/
+.cache/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/

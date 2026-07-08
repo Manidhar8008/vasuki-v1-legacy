@@ -1,0 +1,30 @@
+{
+  "protocolVersion": "1.0",
+  "name": "Vasuki Personal Memory Node",
+  "description": "Local-first personal data workflow, normalization, retrieval, and verification node.",
+  "version": "0.1.0",
+  "url": "http://127.0.0.1:8787",
+  "preferredTransport": "JSONRPC",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "memory-search",
+      "name": "Personal Memory Search",
+      "description": "Search indexed Vasuki memory with provenance.",
+      "tags": ["memory", "retrieval", "sqlite"],
+      "examples": ["Search my data for normalization work"]
+    },
+    {
+      "id": "database-audit",
+      "name": "Database Audit",
+      "description": "Audit database schema, counts, integrity, and duplicates.",
+      "tags": ["sqlite", "verification", "audit"],
+      "examples": ["Audit all Vasuki databases"]
+    }
+  ]
+}

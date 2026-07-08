@@ -1,0 +1,243 @@
+[
+  {
+    "id": "0",
+    "facing": "back",
+    "jpeg_output_sizes": [
+      {
+        "width": 4096,
+        "height": 3072
+      },
+      {
+        "width": 4096,
+        "height": 2304
+      },
+      {
+        "width": 4096,
+        "height": 1840
+      },
+      {
+        "width": 3840,
+        "height": 2160
+      },
+      {
+        "width": 3456,
+        "height": 3456
+      },
+      {
+        "width": 3264,
+        "height": 2448
+      },
+      {
+        "width": 3264,
+        "height": 1840
+      },
+      {
+        "width": 3264,
+        "height": 1632
+      },
+      {
+        "width": 3264,
+        "height": 1504
+      },
+      {
+        "width": 3264,
+        "height": 1472
+      },
+      {
+        "width": 2912,
+        "height": 1344
+      },
+      {
+        "width": 2560,
+        "height": 1920
+      },
+      {
+        "width": 2560,
+        "height": 1080
+      },
+      {
+        "width": 2400,
+        "height": 1028
+      },
+      {
+        "width": 2304,
+        "height": 1728
+      },
+      {
+        "width": 2280,
+        "height": 1080
+      },
+      {
+        "width": 1920,
+        "height": 1920
+      },
+      {
+        "width": 1920,
+        "height": 1440
+      },
+      {
+        "width": 1920,
+        "height": 1088
+      },
+      {
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "width": 1872,
+        "height": 864
+      },
+      {
+        "width": 1600,
+        "height": 720
+      },
+      {
+        "width": 1440,
+        "height": 1088
+      },
+      {
+        "width": 1280,
+        "height": 960
+      },
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 1024,
+        "height": 768
+      },
+      {
+        "width": 960,
+        "height": 544
+      },
+      {
+        "width": 640,
+        "height": 480
+      },
+      {
+        "width": 320,
+        "height": 240
+      }
+    ],
+    "focal_lengths": [
+      5.579999923706055
+    ],
+    "auto_exposure_modes": [
+      "CONTROL_AE_MODE_OFF",
+      "CONTROL_AE_MODE_ON",
+      "CONTROL_AE_MODE_ON_AUTO_FLASH",
+      "CONTROL_AE_MODE_ON_ALWAYS_FLASH"
+    ],
+    "physical_size": {
+      "width": 7.398399829864502,
+      "height": 5.555200099945068
+    },
+    "capabilities": [
+      "backward_compatible",
+      "manual_sensor",
+      "manual_post_processing",
+      "read_sensor_settings",
+      "raw",
+      "burst_capture",
+      "private_reprocessing",
+      "yuv_reprocessing",
+      "constrained_high_speed_video"
+    ]
+  },
+  {
+    "id": "1",
+    "facing": "front",
+    "jpeg_output_sizes": [
+      {
+        "width": 2304,
+        "height": 1728
+      },
+      {
+        "width": 2304,
+        "height": 1296
+      },
+      {
+        "width": 2280,
+        "height": 1080
+      },
+      {
+        "width": 2128,
+        "height": 960
+      },
+      {
+        "width": 1920,
+        "height": 1440
+      },
+      {
+        "width": 1920,
+        "height": 1088
+      },
+      {
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "width": 1872,
+        "height": 864
+      },
+      {
+        "width": 1728,
+        "height": 1728
+      },
+      {
+        "width": 1600,
+        "height": 720
+      },
+      {
+        "width": 1440,
+        "height": 1088
+      },
+      {
+        "width": 1280,
+        "height": 960
+      },
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 1024,
+        "height": 768
+      },
+      {
+        "width": 960,
+        "height": 544
+      },
+      {
+        "width": 640,
+        "height": 480
+      },
+      {
+        "width": 320,
+        "height": 240
+      }
+    ],
+    "focal_lengths": [
+      3.4800000190734863
+    ],
+    "auto_exposure_modes": [
+      "CONTROL_AE_MODE_OFF",
+      "CONTROL_AE_MODE_ON",
+      "CONTROL_AE_MODE_ON_EXTERNAL_FLASH"
+    ],
+    "physical_size": {
+      "width": 4.607999801635742,
+      "height": 3.4560000896453857
+    },
+    "capabilities": [
+      "backward_compatible",
+      "manual_sensor",
+      "manual_post_processing",
+      "read_sensor_settings",
+      "raw",
+      "burst_capture",
+      "constrained_high_speed_video"
+    ]
+  }
+]

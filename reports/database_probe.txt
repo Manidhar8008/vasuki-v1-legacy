@@ -1,0 +1,67 @@
+================================================================================
+VASUKI READ-ONLY DATABASE PROBE v1
+================================================================================
+
+DATABASE: /data/data/com.termux/files/home/vasuki/data/vasuki.db
+  SIZE: 0.78 MB
+  STATUS: UNUSABLE
+  ERROR: DatabaseError: malformed database schema (2026-06-16T09:00:41.227217) - orphan index
+
+DATABASE: /data/data/com.termux/files/home/vasuki/vasuki.db
+  SIZE: 0.78 MB
+  INTEGRITY: ok
+  TABLES:
+    - snapshot_events: 4680
+    - snapshots: 2340
+    - sqlite_sequence: 2
+
+DATABASE: /data/data/com.termux/files/home/vasuki/scripts/vasuki.db
+  SIZE: 0.02 MB
+  INTEGRITY: ok
+  TABLES:
+    - files: 0
+    - memories: 0
+    - sqlite_sequence: 0
+
+DATABASE: /data/data/com.termux/files/home/vasuki/vasuki_v2/data/vasuki.db
+  SIZE: 0.90 MB
+  INTEGRITY: ok
+  TABLES:
+    - event_log: 89
+    - imported_documents: 3
+    - ingestion_runs: 6
+    - knowledge_chunks: 1
+    - knowledge_items: 2
+    - knowledge_sources: 1
+    - memory_chunks: 4
+    - memory_quality_chunks: 7
+    - memory_source_topics: 16
+    - memory_sources: 4
+    - snapshot_events: 4680
+    - snapshots: 2340
+    - sqlite_sequence: 13
+    - tool_audit_log: 18
+
+DATABASE: /data/data/com.termux/files/home/vasuki/vasuki_v2/data/vasuki_source_memory.db
+  SIZE: 0.12 MB
+  INTEGRITY: ok
+  TABLES:
+    - ingestion_runs: 1
+    - source_chunks: 54
+    - source_documents: 13
+    - sqlite_sequence: 3
+
+DATABASE: /data/data/com.termux/files/home/vasuki/vasuki_v2/data/vasuki_personal_memory.db
+  SIZE: 0.77 MB
+  INTEGRITY: ok
+  TABLES:
+    - personal_chunks: 336
+    - personal_documents: 46
+    - personal_search: 336
+    - personal_search_config: 1
+    - personal_search_data: 65
+    - personal_search_docsize: 336
+    - personal_search_idx: 63
+    - sqlite_sequence: 2
+
+================================================================================

@@ -1,0 +1,31 @@
+certifi==2026.5.20
+charset-normalizer==3.4.7
+click==8.4.1
+click-default-group==1.2.4
+idna==3.18
+markdown-it-py==4.2.0
+mdurl==0.1.2
+numpy @ file:///home/builder/.termux-build/python-numpy/src/dist/numpy-2.4.4-cp313-cp313-android_aarch64.whl#sha256=1ae053b54524edf1054aabe7c12e005fb453dc2fd0d17353c7a2056d07a11755
+pandas==3.0.3
+pluggy==1.6.0
+proot-distro @ file:///home/builder/.termux-build/proot-distro/src
+psycopg2-binary==2.9.12
+Pygments==2.20.0
+python-dateutil==2.9.0.post0
+requests==2.34.2
+rich==15.0.0
+scipy @ file:///home/builder/.termux-build/python-scipy/src/dist/scipy-1.17.1-cp313-cp313-android_aarch64.whl#sha256=533cfd0833a4ba668007c11fac35a44cbda12514ae5a6cb643cfb8cbf86bc190
+six==1.17.0
+sqlite-fts4==1.0.3
+sqlite-utils==3.39
+tabulate==0.10.0
+tqdm==4.68.2
+urllib3==2.7.0
+watchdog==6.0.0
+psutil
+rich
+watchdog
+schedule
+numpy
+requests
+sqlite-utils

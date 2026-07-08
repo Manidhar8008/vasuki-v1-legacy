@@ -1,0 +1,66 @@
+================================================================================
+VASUKI PERSONAL MEMORY SCHEMA INSPECTION v1
+DATABASE: /data/data/com.termux/files/home/vasuki/vasuki_v2/data/vasuki_personal_memory.db
+================================================================================
+
+TABLE: personal_documents
+--------------------------------------------------------------------------------
+  id | INTEGER | notnull=0 | pk=1
+  relative_path | TEXT | notnull=1 | pk=0
+  source_path | TEXT | notnull=1 | pk=0
+  filename | TEXT | notnull=1 | pk=0
+  extension | TEXT | notnull=1 | pk=0
+  sha256 | TEXT | notnull=1 | pk=0
+  size_bytes | INTEGER | notnull=1 | pk=0
+  status | TEXT | notnull=1 | pk=0
+  extraction_note | TEXT | notnull=0 | pk=0
+  extracted_at | TEXT | notnull=1 | pk=0
+
+SAMPLE ROW:
+  id: 1
+  relative_path: MANIDHAR%20PATI%20CV.docx
+  source_path: /data/data/com.termux/files/home/storage/shared/MANIDHAR%20PATI%20CV.docx
+  filename: MANIDHAR%20PATI%20CV.docx
+  extension: .docx
+  sha256: f8b966407ee9403127cfc63a51371bf19cfe2cdc2056007b539336b15a7f422f
+  size_bytes: 113177
+  status: extracted
+  extraction_note: None
+  extracted_at: 2026-06-23T14:47:19.898130+00:00
+
+TABLE: personal_chunks
+--------------------------------------------------------------------------------
+  id | INTEGER | notnull=0 | pk=1
+  document_id | INTEGER | notnull=1 | pk=0
+  source_unit | TEXT | notnull=1 | pk=0
+  chunk_index | INTEGER | notnull=1 | pk=0
+  text | TEXT | notnull=1 | pk=0
+  char_count | INTEGER | notnull=1 | pk=0
+
+SAMPLE ROW:
+  id: 1
+  document_id: 1
+  source_unit: document
+  chunk_index: 1
+  text: MANIDHAR PATI | MANIDHAR PATI
+8008106844
+@manidharpati
+ patimanidhar23@gmail.com | 8008106844
+@manidharpati
+ patimanidhar23@gmail.com | 8008106844
+@manidharpati
+ patimanidhar23@gmail.com | I have just graduated with a degree in bachelor of business management  as a fresher to the market with some experience and would like to associate with an organization that promises a creative career in progressive environment so as to enhance my knowledge and skills in the state of new technology and be a pa...
+  char_count: 1186
+
+TABLE: personal_search
+--------------------------------------------------------------------------------
+  text |  | notnull=0 | pk=0
+  relative_path |  | notnull=0 | pk=0
+  source_unit |  | notnull=0 | pk=0
+
+SAMPLE ROW:
+  text: None
+  relative_path: None
+  source_unit: None
+
+================================================================================

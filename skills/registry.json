@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "skills": [
+    {
+      "id": "memory.search",
+      "owner": "search_agent",
+      "description": "Search indexed personal-memory records using keyword and metadata retrieval.",
+      "inputs": {"query": "string"},
+      "outputs": {"results": "array"},
+      "permissions": ["database.read"],
+      "verification": "python3 scripts/search.py '<query>'"
+    },
+    {
+      "id": "database.audit",
+      "owner": "memory_agent",
+      "description": "Inspect SQLite schema, table counts, integrity, and database candidates.",
+      "inputs": {},
+      "outputs": {"report_path": "string"},
+      "permissions": ["database.read", "report.write"],
+      "verification": "python3 scripts/audit_databases.py"
+    },
+    {
+      "id": "files.normalize",
+      "owner": "filesystem_agent",
+      "description": "Normalize raw records without modifying originals.",
+      "inputs": {"source_path": "string"},
+      "outputs": {"normalized_records": "integer"},
+      "permissions": ["data.read", "normalized.write"],
+      "verification": "python3 vasuki.py verify --stage normalize"
+    },
+    {
+      "id": "backup.create",
+      "owner": "backup_agent",
+      "description": "Create a timestamped SQLite snapshot before schema or bulk changes.",
+      "inputs": {},
+      "outputs": {"backup_path": "string"},
+      "permissions": ["database.read", "backup.write"],
+      "verification": "sqlite3 '<backup_path>' 'PRAGMA integrity_check;'"
+    }
+  ]
+}

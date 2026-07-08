@@ -1,0 +1,89 @@
+================================================================================
+VASUKI AGENT REGISTRY AUDIT v1
+Generated: 2026-06-24T17:26:39.349388+00:00
+================================================================================
+
+AGENT: planner_agent
+  status      : AVAILABLE
+  locations   : planner_agent.py
+  role        : Planning and task decomposition
+  skills      : task.plan
+  permissions : database.read, report.write
+  policy      : read_or_propose_only
+
+AGENT: search_agent
+  status      : AVAILABLE
+  locations   : search_agent.py, agents/search_agent.py
+  role        : Personal-memory and file retrieval
+  skills      : memory.search
+  permissions : database.read
+  policy      : read_or_propose_only
+
+AGENT: memory_agent
+  status      : AVAILABLE
+  locations   : memory_agent.py, agents/memory_agent.py
+  role        : Memory validation, provenance, and database inspection
+  skills      : database.audit
+  permissions : database.read, report.write
+  policy      : read_or_propose_only
+
+AGENT: filesystem_agent
+  status      : AVAILABLE
+  locations   : filesystem_agent.py
+  role        : File discovery, classification, and normalization proposals
+  skills      : files.normalize
+  permissions : data.read, normalized.write
+  policy      : read_or_propose_only
+
+AGENT: backup_agent
+  status      : AVAILABLE
+  locations   : backup_agent.py
+  role        : Database snapshot creation and backup verification
+  skills      : backup.create
+  permissions : database.read, backup.write
+  policy      : read_or_propose_only
+
+AGENT: executor_agent
+  status      : AVAILABLE
+  locations   : executor_agent.py
+  role        : Approved action execution only
+  skills      : task.execute
+  permissions : shell.execute, log.write
+  policy      : requires_approved_task_id
+
+AGENT: reasoning_agent
+  status      : AVAILABLE
+  locations   : reasoning_agent.py
+  role        : Evidence-based critique and decision support
+  skills      : task.critique
+  permissions : database.read, report.write
+  policy      : read_or_propose_only
+
+AGENT: device_agent
+  status      : AVAILABLE
+  locations   : device_agent.py
+  role        : Device health and runtime inspection
+  skills      : device.inspect
+  permissions : report.write
+  policy      : read_or_propose_only
+
+AGENT: project_agent
+  status      : AVAILABLE
+  locations   : project_agent.py
+  role        : Repository inventory and project-state analysis
+  skills      : project.audit
+  permissions : data.read, report.write
+  policy      : read_or_propose_only
+
+AGENT: code_agent
+  status      : AVAILABLE
+  locations   : code_agent.py
+  role        : Code analysis and proposed patches
+  skills      : code.review
+  permissions : data.read, report.write
+  policy      : read_or_propose_only
+
+--------------------------------------------------------------------------------
+SUMMARY: 10/10 declared agents found
+REGISTRY: /data/data/com.termux/files/home/vasuki/config/agent_registry.json
+================================================================================
