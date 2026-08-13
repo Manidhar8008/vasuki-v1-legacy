@@ -2,7 +2,7 @@ import time
 import sqlite3
 from datetime import datetime
 
-DB = "/data/data/com.termux/files/home/vasuki/data/vasuki.db"
+DB = "/data/data/com.termux/files/home/vasuki/vasuki.db"
 
 conn = sqlite3.connect(DB, timeout=30)
 cur = conn.cursor()

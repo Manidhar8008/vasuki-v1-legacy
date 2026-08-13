@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 
 ROOT = Path.home() / "storage" / "shared"
-DB = Path.home() / "vasuki" / "data" / "vasuki.db"
+DB = Path.home() / "vasuki" / "vasuki.db"
 
 os.makedirs(DB.parent, exist_ok=True)
 
