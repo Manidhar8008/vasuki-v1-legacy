@@ -10,6 +10,12 @@ DB_PATH = os.path.expanduser("~/vasuki/vasuki.db")
 SNAPSHOT_TABLE = "snapshots"
 EVENT_TABLE = "snapshot_events"
 
+SELF_REFERENCED_TABLES = {
+    SNAPSHOT_TABLE,
+    EVENT_TABLE,
+    "sqlite_sequence",
+}
+
 # -------------------------
 # DB INIT
 # -------------------------
@@ -53,6 +59,9 @@ def collect_state():
     ).fetchall()
 
     for (t,) in tables:
+        if t in SELF_REFERENCED_TABLES or t.startswith("sqlite_"):
+            continue
+
         try:
             count = cur.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
             state[t] = count
@@ -177,7 +186,7 @@ def run_cycle():
     print("TIME:", datetime.utcnow().isoformat())
     print("HASH:", h)
 
-    if last:
+    if last is not None:
         changes = diff_states(last, state)
 
         if not changes:
