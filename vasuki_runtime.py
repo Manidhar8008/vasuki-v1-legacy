@@ -167,86 +167,186 @@ def import_extracted_text(con):
 
 
 def import_personal_memory(con):
+    """
+    Import the existing V2 personal-memory database into the
+    canonical runtime database.
+
+    This adapter is deliberately schema-tolerant:
+    - discovers tables dynamically
+    - discovers columns dynamically
+    - never assumes rowid exists in sqlite3.Row
+    - never crashes the entire runtime because the V2 source
+      has a different schema
+    """
+
     if not PERSONAL_DB.exists():
+        print("Personal memory DB not found:", PERSONAL_DB)
         return 0
 
-    source = sqlite3.connect(
-        f"file:{PERSONAL_DB}?mode=ro",
-        uri=True,
-    )
-    source.row_factory = sqlite3.Row
-
-    tables = {
-        row["name"]
-        for row in source.execute("""
-            SELECT name
-            FROM sqlite_master
-            WHERE type='table'
-        """)
-    }
+    try:
+        source = sqlite3.connect(
+            f"file:{PERSONAL_DB}?mode=ro",
+            uri=True,
+        )
+        source.row_factory = sqlite3.Row
+    except Exception as exc:
+        print("Could not open personal memory DB:", exc)
+        return 0
 
     imported = 0
 
-    # Primary V2 chunks.
-    if "personal_chunks" in tables:
-        columns = [
+    try:
+        tables = [
             row["name"]
-            for row in source.execute(
-                'PRAGMA table_info("personal_chunks")'
-            )
+            for row in source.execute("""
+                SELECT name
+                FROM sqlite_master
+                WHERE type='table'
+                  AND name NOT LIKE 'sqlite_%'
+                ORDER BY name
+            """).fetchall()
         ]
 
-        preferred = [
-            c for c in (
-                "content",
-                "text",
-                "chunk_text",
-                "body",
-                "document_text",
-                "title",
-                "path",
-                "source",
-            )
-            if c in columns
-        ]
+        print("Personal-memory source tables:", tables)
 
-        if preferred:
-            text_expr = " || '\n' || ".join(
+        for table in tables:
+
+            try:
+                columns = [
+                    row["name"]
+                    for row in source.execute(
+                        f'PRAGMA table_info("{table}")'
+                    ).fetchall()
+                ]
+            except Exception as exc:
+                print(f"Skipping {table}: schema error: {exc}")
+                continue
+
+            if not columns:
+                continue
+
+            # Look for columns likely to contain actual information.
+            content_columns = [
+                c for c in (
+                    "content",
+                    "text",
+                    "chunk_text",
+                    "body",
+                    "document_text",
+                    "memory",
+                    "description",
+                    "summary",
+                    "value",
+                    "title",
+                    "path",
+                    "source",
+                )
+                if c in columns
+            ]
+
+            if not content_columns:
+                print(
+                    f"Skipping {table}: "
+                    f"no recognizable content columns"
+                )
+                continue
+
+            expressions = [
                 f'COALESCE(CAST("{c}" AS TEXT), \'\')'
-                for c in preferred
+                for c in content_columns
+            ]
+
+            text_expr = " || '\n' || ".join(expressions)
+
+            try:
+                rows = source.execute(
+                    f"""
+                    SELECT *
+                    FROM "{table}"
+                    WHERE length(trim({text_expr})) > 0
+                    """
+                ).fetchall()
+            except Exception as exc:
+                print(f"Skipping {table}: read error: {exc}")
+                continue
+
+            print(
+                f"Reading {table}: "
+                f"{len(rows)} candidate records"
             )
 
-            rows = source.execute(
-                f"""
-                SELECT rowid, {text_expr} AS content
-                FROM personal_chunks
-                WHERE length(trim({text_expr})) > 0
-                """
-            ).fetchall()
+            for index, row in enumerate(rows):
 
-            for row in rows:
-                con.execute("""
-                    INSERT INTO memories
-                        (source, source_id, memory_type, title, content, importance)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    ON CONFLICT(source, source_id) DO UPDATE SET
-                        content=excluded.content,
-                        title=excluded.title
-                """, (
-                    "vasuki_v2.personal_chunks",
-                    str(row["rowid"]),
-                    "personal",
-                    "Personal memory",
-                    row["content"],
-                    2,
-                ))
+                try:
+                    parts = []
 
-                imported += 1
+                    for column in content_columns:
+                        value = row[column]
 
-    source.close()
+                        if value is not None:
+                            value = str(value).strip()
+
+                            if value:
+                                parts.append(value)
+
+                    content = "\n".join(parts).strip()
+
+                    if not content:
+                        continue
+
+                    # Use a deterministic source identifier.
+                    # Do NOT depend on SQLite rowid.
+                    source_id = f"{table}:{index}"
+
+                    title = (
+                        str(row["title"]).strip()
+                        if "title" in row.keys()
+                        and row["title"] is not None
+                        else table
+                    )
+
+                    con.execute("""
+                        INSERT INTO memories
+                            (
+                                source,
+                                source_id,
+                                memory_type,
+                                title,
+                                content,
+                                importance
+                            )
+                        VALUES (?, ?, ?, ?, ?, ?)
+                        ON CONFLICT(source, source_id)
+                        DO UPDATE SET
+                            content=excluded.content,
+                            title=excluded.title
+                    """, (
+                        f"vasuki_v2.{table}",
+                        source_id,
+                        "personal",
+                        title[:500],
+                        content,
+                        2,
+                    ))
+
+                    imported += 1
+
+                except Exception as exc:
+                    print(
+                        f"Skipping record {table}:{index}: {exc}"
+                    )
+
+    finally:
+        source.close()
+
     con.commit()
-    return imported
 
+    print(
+        "Personal memory import complete:",
+        imported
+    )
+
+    return imported
 
 def status(con):
     print("\n==============================")
